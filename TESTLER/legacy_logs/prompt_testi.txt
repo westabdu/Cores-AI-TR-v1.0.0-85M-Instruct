@@ -1,0 +1,294 @@
+Test 1:
+📦 Tokenizer yükleniyor: tokenizer_tr_v2.json
+   Vocab: 50000, [BOS] ID: 2
+
+🧠 Model yükleniyor: /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test/ckpt.pt
+number of parameters: 81.17M
+   ✅ Model yüklendi! iter=5000, best_val_loss=2.842421054840088
+   Parametre: 81,165,440
+
+🔤 Prompt: "Türkiye"
+
+============================================================
+🚀 5 örnek üretiliyor...
+============================================================
+
+--- Örnek 1/5 ---
+Türkiye, Rusya, Özbekistan, Özbekistan, Moldova, Tacikistan, İsrail, Belarus ve Nepal'de yaygın olarak kullanılan bir terimdir. Manevra, geleneksel olarak Sibirya'da yaygın olarak kullanılan bir isimdir.
+
+Kaynakça 
+
+Bilişsel siyasetYunga, yönetmenliğini Burak Özmö'ün üstlendiği 1965 yapımı Türk filmidir. Başrollerinde Yılmaz Güney, Ayhan Şen, Ece Can ve Hakan Özmö'ün yer aldığı film, dört dalda Oscar ödülü kazandı.
+
+Oyuncular
+ Engin Karabün
+ Hülya Koçyiğit
+ Aydın Tülfün
+ Renal
+ Hüseyin Çalın
+ Özge Söke
+ Mete Can
+ Zobu Zavç
+ Eda Çölgeçen
+ İlhan Duv
+ Mümtaz Ener
+
+Kaynakça
+
+Dış bağlantılar 
+ 
+ 
+
+Türk aksiyon filmleri
+Türk takip filmleri
+İstanbul'da çekilmiş filmler
+Çetin Tunca'nın yönettiği filmler
+Selam Film filmleri
+1960'larda aksiyon filmleri
+1960'larda aksiyon gerilim filmleri
+Türk devam filmleri
+Türk romantik dram filmleri
+1960
+
+
+--- Örnek 2/5 ---
+Türkiye 18 yaş altı millî futbol takımı, 27 Mayıs 2020 tarihinde Adana'da yapılan Türkiye millî futbol futbol takımının teknik direktörlüğünü yapan ve 9. dönem Galatasaray'ın isteğiyle Galatasaray'a seçildi.
+
+Futbolculuk kariyeri
+
+Kulüplik kariyerine R. Standard de Liège'de başlayan Orhan, 19 yaşında de Eredivisie'ye imza attı. R. Standard de Liège'de geçirdiği trafik kazası sonucu 5 ay forma giydi ve maçı 2-1 kaybetti.
+
+Millî takım kariyeri
+
+Kulüp kariyeri
+
+Kulüp kariyeri
+
+R. Standard de Liège 
+
+A takım ile ilk maçına, 5 Aralık 2020 tarihinde Sivasspor'a karşı oynanan ve Türkiye liginin 1. Lig Beyaz Grup maçında çıktı.
+
+Galatasaray 
+4 kez Türkiye U-17, Türkiye U-21 ve Türkiye U-19 forması olmak üzere toplam 25 maça çıkan Orhan, 8 gol attı.
+
+İstatistikleri
+
+Kulüp takım istatistikleri
+
+Teknik direktörlük kariyeri
+
+Özel hayatı
+
+Teknik direktörlük kariyeri
+
+Millî takım kariyeri 
+D
+
+
+--- Örnek 3/5 ---
+Türkiye 1. Futbol Ligi, Türkiye Kupası'nın en üst seviye ligi.
+
+Final final maçları 
+Türkiye Kupasına katılan takımlar, 5 Şubat tarihinde Türkiye'nin İstanbul'dan itibaren düzenlenen Türkiye Basketbol Ligi şampiyonu Galatasaray'ın açılış maçını kazandı.
+
+Final
+
+Türkiye Kupası
+
+Erkek takımları
+
+Türkiye Kupası
+
+Türkiye Kupası
+
+Kadın takımları
+
+D kadınHansa, Hindistan'ın Orwell ilçesinde yer alan bir şehirdir. Şehrin nüfusu 2010 sayımına göre 1.318'dir.
+
+Kardeş şehirler
+
+Kaynakça
+
+Dış bağlantılar 
+Resmi web sitesi 
+ 
+
+Hindistan'daki şehirler
+Hindistan'daki il merkezleri
+Ahit ilindeki yerleşim birimleriPharur İli (Farsça: بندا مندان), İran'ın Orwell şehrinde bulunan bir İlidir. İli, eyaletin orta kesiminde yer almakta olup Darıca'nın 23 km güneyinde yer almaktadır. İl, eyaletin kuzeybatısında yer almaktadır. Yüzölçümü 9.92 km
+
+
+--- Örnek 4/5 ---
+Türkiye'deki diğer bazı yerleşim yerleri gibi, "Türkler Kaldırma" anlamına gelmektedir.
+
+Coğrafya 
+Kayseri iline 58 km, Gönen ilçesine 75 km uzaklıktadır.
+
+Nüfus
+
+Kaynakça 
+
+Mersin ilinin yaylaları
+NiğdeEtikabad, Türkiye'de yer alan, 1 Temmuz 1997'de kurulan ve 19 Mart 2021'de hizmete giren, Türkiye'nin en büyük ikinci petrol üreticisiydi.
+
+Tarihçe 
+9 Kasım 1991'de, Ankara'da kurulan ve önceleri 1 Temmuz 1997'de kurulan ve 3 Ağustos 2017'nin ilk petrol ihracat ve ihracat kuruluşu, Türk petrol üreticisi ZF'ye satılmıştır. Türkiye, ilk petrol ürünlerinin ihracatçısı olan Türk petrolü olan Türk petrolü ile Türkiye'de petrol dağıtımı yapmaktadır.
+
+2018 yılında dört petrol işleten yeni petrol ithalatçısı olan Türk petrolü, 2007 yılında petrol ihracatçısı Türkiye'nin en büyük petrol rafinerisi haline gelmişti. Daha sonra petrol ihracatçısı olarak Türkiye'de altın, 2012 yılında
+
+
+--- Örnek 5/5 ---
+Türkiye'deki apartmanların listesi:
+
+Ayrıca bakınız 
+Türkiye'deki oteller listesi
+
+Kaynakça
+
+Dış bağlantılar 
+Türkiye'deki apartmanlar listesi
+
+Türkiye'deki otoyollarMuharrem Güneyya (d. 24 Haziran 1980, Manisa) Türk futbolcudur.
+
+Futbolculuk kariyeri
+
+Kulüp takımları kariyeri 
+Futbola Manisa’da başlayan Ayay, burada 2 sezon süren uzun süreli çalıştırmada, profesyonel kariyerine ise Manisa 1. Lig ekiplerinden Yeni Çorumspor’da başlamıştır.
+
+İstatistikleri
+
+Kulüp takım istatistikleri
+
+Kaynakça
+
+Dış bağlantılar 
+ 
+ 
+
+1980 doğumlular
+Manisa doğumlu futbolcular
+Yaşayan insanlar
+Türk erkek futbolcular
+Resim aranan futbolcular
+Türk erkek futbolcular
+Resim aranan futbolcular
+Orta saha futbolcularıCumhuriyet Halk Partisi, TBMM'nin ve Türkiye Büyük Millet Meclisinin bir kısmını oluşturan 21. dönem partisidir.
+
+Tarihi 
+Cumhuriyet Halk Partisi, 29 Temmuz 1979'da Diyarbakır'da kurulmuş olan, grubun adı Ayay olarak değiştirilmiştir. Genel
+
+============================================================
+✅ Üretim tamamlandı!
+
+Test 2:
+📦 Tokenizer yükleniyor: tokenizer_tr_v2.json
+   Vocab: 50000, [BOS] ID: 2
+
+🧠 Model yükleniyor: /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test/ckpt.pt
+number of parameters: 81.17M
+   ✅ Model yüklendi! iter=5000, best_val_loss=2.842421054840088
+   Parametre: 81,165,440
+
+🔤 Prompt: "Yapay zeka"
+
+============================================================
+🚀 3 örnek üretiliyor...
+============================================================
+
+--- Örnek 1/3 ---
+Yapay zeka, her şeyin, insan ve bu bilim tarafından ölçülüğunu anlamak için gerekli olan bir sosyal bilimdir. Her şey, insan ve bu bilimde uygulanan sosyal bilimlerin sosyal bilimlere, bu bilimlere ve araştırmalar için gerekli olan sonuçları, insan ve etik etkileri aracılığıyla, bilimde ve bilimsel çalışmaları nasıl değerlendirdiğini belirlemeleri ve bu bilimde, bilimde ve bilimde yüksek düzeyde bilimsel ve dijital olarak ele alınması gerektiğini vurgular.
+
+İlk olarak Amerika Birleşik Devletleri'nde bilim bilimlerinin kurulması, dünya genelinde önemli bir siyasi eylemdir. ABD ve Japonya'da ise, bilim ve teknoloji alanındaki ana yardım örgütlerine, sivil bilimlerin sorumluluklarını dikkate alır. Bu sistem, küresel ve ek olarak, dünya genelinde doğal olarak kabul edilen ve doğal olarak kabul edilen yapay
+
+
+--- Örnek 2/3 ---
+Yapay zeka, insan, insan ve diğer hayvanlarla, insan insan olarak kabul edilen insan gibi davranışları.
+
+DNA'nın doğal yaşam alanıyla ilgili ilk örnekler, 19. yüzyıldan bugüne kadar bir geçmişe dayanan biyolojik ve genetik çalışmalar üzerinde belirleyici rol oynayan doğa bilimcileridir. Yapay zeka terimi, insan dostu bilgisayarının evrimsel konumlarının ve diğer bir doğa bilimcileri olduğunu öne sürmektedir.
+
+Kaynakça 
+Özel
+
+Genel
+
+Afrika'daki doğa felsefesi
+Avrupa'nın evrimi
+Türlerine göre bilim felsefesi
+Türlerine göre bilimPerdebrace, Afrika kıtasında bulunan Akdeniz bölgesindeki en büyük devlettir. 2018 yılına göre nüfusu 13.615'tür.
+
+Kaynakça
+
+Dış bağlantılar 
+
+ Resmi web sitesi
+
+Akdeniz'teki eyalet
+
+
+--- Örnek 3/3 ---
+Yapay zeka için sistem, bir sağlık hizmeti, ve üretim amacı tarafından bir sağlık ağı, bir sağlık hizmeti veya diğer sosyal ağların ortak bir kurum olarak kullanılmasıdır.Craig, 1990'larda kurulan ve Hindistan merkezli bir ulusal hava aracı. Uzay gezici ve bilgisayar (İngilizce: CSI) ile eş zamanlı olarak bilim ve teknoloji endüstrisi için çok sayıda araştırma ve geliştirme amaçlı bir iş merkezidir. Uzay gezici, bilgisayar ve televizyon için çeşitli sivil ve işletmelere ihtiyaç duyan, elektronik, elektronik, bilgisayar ve internet iletişim cihazları, elektronik ve bilgisayar bilimi, yerel iletişim, elektronik ve bilgisayar bilimi, makine mühendisliği gibi alanlarda uzmanlaşmış yapay zeka üzerine bir eğitim merkezidir.
+
+Kaynakça
+
+Dış bağlantılar 
+
+ resmi web sitesi
+
+Ayrıca bakınız
+ Uzay gezici
+
+============================================================
+✅ Üretim tamamlandı!
+
+test 3(en şaşırtıcı test):
+📦 Tokenizer yükleniyor: tokenizer_tr_v2.json
+   Vocab: 50000, [BOS] ID: 2
+
+🧠 Model yükleniyor: /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test/ckpt.pt
+number of parameters: 81.17M
+   ✅ Model yüklendi! iter=5000, best_val_loss=2.842421054840088
+   Parametre: 81,165,440
+
+🔤 Prompt: "İstanbul"
+
+============================================================
+🚀 3 örnek üretiliyor...
+============================================================
+
+--- Örnek 1/3 ---
+İstanbul'de 86 sandalye 3 kişiye eşit paylaştırılacak. Her kişi kaç sandalye alır?
+Çözüm: 86 ÷ 3 = 28 sandalye (kalan: 2)Örüntü: 25, 36, 49, 64, ?
+Sonraki: 81 (kareler: 9²)Bir sayının 10 katının 3 fazlası 147 ise bu sayı kaçtır?
+Çözüm: Sayı = 14x + 29 = 83 ise x değeri nedir?
+Çözüm: x = 83 - 29 = 54A = 63, B = 80, C = 44. En büyük ve en küçük hangileridir?
+Cevap: En büyük 80, en küçük 44851 sayısını 5 ile bölrsak kaç buluruz?
+Sonuç: 851 bölü 5 = 181.2Orhan 12 top, 19 top ve 18 top aldı. Toplam kaç top var?
+Çözüm: 12 + 19 + 18 = 49 topBir sayının 2 katının 19 fazlası 51 ise bu sayı kaçtır?
+Çözüm: Sayı = 16x + 32
+
+
+--- Örnek 2/3 ---
+İstanbul'de 41 kitap 8 kişiye eşit paylaştırılacak. Her kişi kaç kitap alır?
+Çözüm: 41 ÷ 8 = 5 kitap (kalan: 1)Bir sayının 6 katının 25 fazlası 129 ise bu sayı kaçtır?
+Çözüm: Sayı = 18Efe 39 yaşındadır. Ablası 12 yaş büyüktür. 5 yıl önce ablası kaç yaşındaydı?
+Çözüm: 39 + 12 - 5 = 46 yaşındaA = 97, B = 94, C = 22. En büyük ve en küçük hangileridir?
+Cevap: En büyük 97, en küçük 229x + 30 = 120 denkleminde x kaçtır?
+Çözüm: 9x = 120 - 30 = 90, x = 10Bir sayının 2 katının 20 fazlası 42 ise bu sayı kaçtır?
+Çözüm: Sayı = 11Sıralama: 18, 20, 22, 24, ?
+Sonraki sayı: 26 (çift artıyor)A = 20, B = 38, C = 68. En büyük ve en küçük hangileridir?
+
+
+
+--- Örnek 3/3 ---
+İstanbul'de 83 top 4 kişiye eşit paylaştırılacak. Her kişi kaç top alır?
+Çözüm: 83 ÷ 4 = 20 top (kalan: 3)Tüm A'lar B'dir. C bir A'dır. O zaman C nedir?
+Cevap: C bir B'dir.Örüntü: 16, 25, 36, 49, ?
+Sonraki: 64 (kareler: 8²)Fatma 4 elma, 3 elma ve 10 elma aldı. Toplam kaç elma var?
+Çözüm: 4 + 3 + 10 = 18 elmaBir sayının 3 katının 5 fazlası 32 ise bu sayı kaçtır?
+Çözüm: Sayı = 9x + 32 = 46 ise x değeri nedir?
+Çözüm: x = 46 - 32 = 14Serkan 16 yaşındadır. Ablası 13 yaş büyüktür. 5 yıl önce ablası kaç yaşındaydı?
+Çözüm: 16 + 13 - 5 = 24 yaşında9x + 38 = 143 denkleminde x kaçtır?
+Çözüm: 9x = 143
+
+============================================================
+✅ Üretim tamamlandı!

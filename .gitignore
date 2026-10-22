@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch & Model Checkpoints (GitHub 100MB limiti nedeniyle repoya direkt atılmaz)
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+out-*/
+out/
+TESTLER/temp_sft_*/
+
+# Veri setleri ve büyük ham veriler
+data/
+turkce/
+veri/
+*.arrow
+
+# Sanal Ortamlar
+.venv/
+venv/
+ENV/
+env/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistem Dosyaları
+.DS_Store
+Thumbs.db
+
+# Loglar
+*.log
+wandb/

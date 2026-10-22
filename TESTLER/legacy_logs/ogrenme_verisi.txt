@@ -1,0 +1,599 @@
+Overriding config with config/train_cores_85m_test.py:
+# Cores-AI TR - 85M Test Modeli - Colab T4 (16GB VRAM)
+# Faz A: Pipeline dogrulama, hizli test
+# Kullanim: python train.py config/train_cores_85m_test.py
+
+out_dir = '/content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test'
+eval_interval = 250
+eval_iters = 50
+log_interval = 10
+always_save_checkpoint = True
+wandb_log = False
+
+# Veri
+dataset = 'turkce'
+
+# Model - 85M
+n_layer = 10
+n_head = 10
+n_embd = 640
+dropout = 0.0
+bias = False
+
+# Batch - Colab T4 (16GB) için OPTIMIZE
+batch_size = 16                   # 2 -> 16 (T4 rahat kaldırır)
+block_size = 512                  # 256 -> 512 (daha uzun bağlam)
+gradient_accumulation_steps = 5   # 20 -> 5 (efektif batch = 16 × 5 = 80)
+
+# Optimizer
+learning_rate = 3e-4
+max_iters = 5000
+weight_decay = 1e-1
+beta1 = 0.9
+beta2 = 0.95
+grad_clip = 1.0
+
+# LR schedule
+decay_lr = True
+warmup_iters = 500
+lr_decay_iters = 5000
+min_lr = 3e-5
+
+# Sistem - Colab T4
+device = 'cuda'
+dtype = 'float16'                 # T4 bfloat16 desteklemez
+compile = False                    # Colab'da Triton var, ÇALIŞIR! (hız)
+
+# Gradient checkpointing - T4'te VRAM rahat, KAPAT (hız)
+use_gradient_checkpointing = False
+tokens per iteration will be: 40,960
+found vocab_size = 50000 (inside data/turkce/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 81.17M
+/content/nanoGPT/train.py:202: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+num decayed parameter tensors: 42, with 81,479,680 parameters
+num non-decayed parameter tensors: 21, with 13,440 parameters
+using fused AdamW: True
+step 0: train loss 10.9320, val loss 10.9370
+iter 0: loss 10.9053, time 14048.50ms, mfu -100.00%
+iter 10: loss 10.1483, time 1824.61ms, mfu 407.41%
+iter 20: loss 9.8267, time 2009.82ms, mfu 403.66%
+iter 30: loss 9.2479, time 1956.29ms, mfu 401.29%
+iter 40: loss 8.7780, time 1837.14ms, mfu 401.63%
+iter 50: loss 8.4799, time 1843.19ms, mfu 401.80%
+iter 60: loss 8.9353, time 1945.83ms, mfu 399.82%
+iter 70: loss 7.7348, time 1919.90ms, mfu 398.56%
+iter 80: loss 7.5522, time 1864.41ms, mfu 398.57%
+iter 90: loss 7.8838, time 1873.92ms, mfu 398.39%
+iter 100: loss 7.7555, time 1914.32ms, mfu 397.38%
+iter 110: loss 6.4039, time 1890.98ms, mfu 396.95%
+iter 120: loss 7.4380, time 1859.63ms, mfu 397.23%
+iter 130: loss 7.0409, time 1877.12ms, mfu 397.11%
+iter 140: loss 5.9097, time 1897.17ms, mfu 396.58%
+iter 150: loss 6.6780, time 1893.32ms, mfu 396.19%
+iter 160: loss 6.3534, time 1902.82ms, mfu 395.64%
+iter 170: loss 6.3216, time 1879.82ms, mfu 395.62%
+iter 180: loss 6.1766, time 1886.32ms, mfu 395.46%
+iter 190: loss 6.9784, time 1878.10ms, mfu 395.50%
+iter 200: loss 6.5094, time 1884.69ms, mfu 395.39%
+iter 210: loss 5.2705, time 1887.21ms, mfu 395.24%
+iter 220: loss 5.8973, time 1879.90ms, mfu 395.26%
+iter 230: loss 6.6193, time 1872.61ms, mfu 395.43%
+iter 240: loss 5.1331, time 1887.16ms, mfu 395.28%
+step 250: train loss 5.5882, val loss 4.2955
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 250: loss 4.2437, time 26293.30ms, mfu 358.58%
+iter 260: loss 5.5563, time 1958.34ms, mfu 360.68%
+iter 270: loss 5.5813, time 2017.24ms, mfu 361.46%
+iter 280: loss 5.6458, time 1841.41ms, mfu 365.69%
+iter 290: loss 6.1760, time 1832.57ms, mfu 369.68%
+iter 300: loss 4.9050, time 1900.21ms, mfu 371.84%
+iter 310: loss 6.4340, time 1921.82ms, mfu 373.33%
+iter 320: loss 4.8237, time 1881.01ms, mfu 375.52%
+iter 330: loss 4.2123, time 1860.02ms, mfu 377.93%
+iter 340: loss 4.8583, time 1881.91ms, mfu 379.64%
+iter 350: loss 6.1621, time 1890.37ms, mfu 381.00%
+iter 360: loss 4.3130, time 1887.28ms, mfu 382.29%
+iter 370: loss 5.3348, time 1907.82ms, mfu 383.03%
+iter 380: loss 6.1090, time 1899.69ms, mfu 383.85%
+iter 390: loss 4.9455, time 1877.92ms, mfu 385.05%
+iter 400: loss 4.2389, time 1889.87ms, mfu 385.88%
+iter 410: loss 5.0733, time 1875.05ms, mfu 386.94%
+iter 420: loss 5.0336, time 1880.95ms, mfu 387.77%
+iter 430: loss 4.7232, time 1869.31ms, mfu 388.76%
+iter 440: loss 5.1779, time 1862.43ms, mfu 389.80%
+iter 450: loss 5.4637, time 1875.52ms, mfu 390.45%
+iter 460: loss 4.1166, time 1873.76ms, mfu 391.08%
+iter 470: loss 5.0660, time 1881.74ms, mfu 391.48%
+iter 480: loss 5.3988, time 1864.65ms, mfu 392.20%
+iter 490: loss 4.5502, time 1862.38ms, mfu 392.89%
+step 500: train loss 4.5048, val loss 3.7661
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 500: loss 5.3744, time 19395.74ms, mfu 357.43%
+iter 510: loss 4.5208, time 1926.74ms, mfu 360.27%
+iter 520: loss 4.8043, time 1880.05ms, mfu 363.79%
+iter 530: loss 4.1344, time 1841.55ms, mfu 367.77%
+iter 540: loss 4.8171, time 1878.68ms, mfu 370.57%
+iter 550: loss 4.6206, time 1895.84ms, mfu 372.72%
+iter 560: loss 4.7435, time 1890.08ms, mfu 374.78%
+iter 570: loss 4.7994, time 1873.48ms, mfu 376.98%
+iter 580: loss 4.8073, time 1865.39ms, mfu 379.13%
+iter 590: loss 4.5372, time 1861.34ms, mfu 381.16%
+iter 600: loss 3.7781, time 1850.09ms, mfu 383.22%
+iter 610: loss 3.9750, time 1848.38ms, mfu 385.12%
+iter 620: loss 3.8977, time 1851.83ms, mfu 386.75%
+iter 630: loss 4.2329, time 1861.71ms, mfu 388.00%
+iter 640: loss 3.7996, time 1859.32ms, mfu 389.18%
+iter 650: loss 4.7356, time 1863.15ms, mfu 390.16%
+iter 660: loss 3.1443, time 1884.18ms, mfu 390.60%
+iter 670: loss 3.9575, time 1880.72ms, mfu 391.07%
+iter 680: loss 3.7954, time 1887.13ms, mfu 391.35%
+iter 690: loss 4.3946, time 1870.87ms, mfu 391.95%
+iter 700: loss 3.9068, time 1859.36ms, mfu 392.74%
+iter 710: loss 4.9246, time 1855.30ms, mfu 393.53%
+iter 720: loss 5.1972, time 1864.39ms, mfu 394.05%
+iter 730: loss 3.6029, time 1866.64ms, mfu 394.47%
+iter 740: loss 4.0363, time 1862.61ms, mfu 394.93%
+step 750: train loss 4.1715, val loss 3.4933
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 750: loss 5.3895, time 19563.83ms, mfu 359.24%
+iter 760: loss 4.3305, time 1937.91ms, mfu 361.67%
+iter 770: loss 3.7524, time 1881.36ms, mfu 365.02%
+iter 780: loss 4.2466, time 1839.50ms, mfu 368.93%
+iter 790: loss 3.6344, time 1862.01ms, mfu 371.96%
+iter 800: loss 4.2153, time 1887.84ms, mfu 374.14%
+iter 810: loss 3.9748, time 1881.30ms, mfu 376.24%
+iter 820: loss 4.4208, time 1867.76ms, mfu 378.42%
+iter 830: loss 3.3911, time 1865.23ms, mfu 380.43%
+iter 840: loss 3.9157, time 1854.08ms, mfu 382.48%
+iter 850: loss 3.2422, time 1863.96ms, mfu 384.11%
+iter 860: loss 3.1779, time 1855.68ms, mfu 385.76%
+iter 870: loss 4.3384, time 1869.48ms, mfu 386.95%
+iter 880: loss 4.4901, time 1868.53ms, mfu 388.04%
+iter 890: loss 5.0933, time 1874.30ms, mfu 388.90%
+iter 900: loss 4.9876, time 1872.99ms, mfu 389.69%
+iter 910: loss 4.9971, time 1883.43ms, mfu 390.19%
+iter 920: loss 4.1247, time 1869.71ms, mfu 390.93%
+iter 930: loss 4.4041, time 1881.24ms, mfu 391.36%
+iter 940: loss 3.4449, time 1868.91ms, mfu 392.00%
+iter 950: loss 3.5725, time 1865.03ms, mfu 392.65%
+iter 960: loss 3.7647, time 1858.99ms, mfu 393.38%
+iter 970: loss 3.0270, time 1855.00ms, mfu 394.11%
+iter 980: loss 3.0034, time 1841.65ms, mfu 395.07%
+iter 990: loss 4.3758, time 1864.40ms, mfu 395.43%
+step 1000: train loss 3.9172, val loss 3.6958
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 1000: loss 3.7448, time 24143.24ms, mfu 358.97%
+iter 1010: loss 4.8406, time 1947.23ms, mfu 361.25%
+iter 1020: loss 4.1751, time 1920.98ms, mfu 363.82%
+iter 1030: loss 2.7887, time 1838.15ms, mfu 367.88%
+iter 1040: loss 3.9049, time 1833.43ms, mfu 371.64%
+iter 1050: loss 4.7650, time 1890.45ms, mfu 373.80%
+iter 1060: loss 4.7741, time 1890.76ms, mfu 375.73%
+iter 1070: loss 3.3245, time 1840.56ms, mfu 378.55%
+iter 1080: loss 3.9108, time 1865.68ms, mfu 380.54%
+iter 1090: loss 3.3226, time 1867.30ms, mfu 382.29%
+iter 1100: loss 2.8102, time 1883.77ms, mfu 383.53%
+iter 1110: loss 3.1027, time 1862.53ms, mfu 385.09%
+iter 1120: loss 4.2403, time 1858.87ms, mfu 386.57%
+iter 1130: loss 4.6992, time 1848.92ms, mfu 388.12%
+iter 1140: loss 3.9780, time 1841.12ms, mfu 389.68%
+iter 1150: loss 3.2178, time 1854.78ms, mfu 390.79%
+iter 1160: loss 4.3996, time 1861.92ms, mfu 391.64%
+iter 1170: loss 2.1831, time 1872.46ms, mfu 392.17%
+iter 1180: loss 4.3339, time 1879.72ms, mfu 392.50%
+iter 1190: loss 3.8737, time 1878.84ms, mfu 392.82%
+iter 1200: loss 3.3405, time 1883.96ms, mfu 393.00%
+iter 1210: loss 2.7511, time 1881.47ms, mfu 393.21%
+iter 1220: loss 4.2621, time 1871.94ms, mfu 393.60%
+iter 1230: loss 3.2092, time 1874.97ms, mfu 393.88%
+iter 1240: loss 4.1276, time 1868.91ms, mfu 394.27%
+step 1250: train loss 3.6589, val loss 3.2184
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 1250: loss 4.7035, time 21126.85ms, mfu 358.36%
+iter 1260: loss 4.3284, time 1938.33ms, mfu 360.88%
+iter 1270: loss 2.4862, time 1866.27ms, mfu 364.62%
+iter 1280: loss 3.3575, time 1839.81ms, mfu 368.56%
+iter 1290: loss 3.5060, time 1866.70ms, mfu 371.53%
+iter 1300: loss 3.7165, time 1872.70ms, mfu 374.07%
+iter 1310: loss 3.7383, time 1882.64ms, mfu 376.15%
+iter 1320: loss 4.2170, time 1866.31ms, mfu 378.37%
+iter 1330: loss 4.2432, time 1864.74ms, mfu 380.40%
+iter 1340: loss 3.3221, time 1853.58ms, mfu 382.46%
+iter 1350: loss 3.8371, time 1844.38ms, mfu 384.52%
+iter 1360: loss 2.3493, time 1842.78ms, mfu 386.41%
+iter 1370: loss 2.8539, time 1865.72ms, mfu 387.61%
+iter 1380: loss 3.3726, time 1869.66ms, mfu 388.61%
+iter 1390: loss 3.4476, time 1871.36ms, mfu 389.47%
+iter 1400: loss 3.4021, time 1863.08ms, mfu 390.42%
+iter 1410: loss 2.6573, time 1874.91ms, mfu 391.03%
+iter 1420: loss 3.1797, time 1874.88ms, mfu 391.58%
+iter 1430: loss 3.5013, time 1872.39ms, mfu 392.12%
+iter 1440: loss 3.4305, time 1863.46ms, mfu 392.80%
+iter 1450: loss 3.3819, time 1876.61ms, mfu 393.13%
+iter 1460: loss 3.8004, time 1876.62ms, mfu 393.43%
+iter 1470: loss 3.2069, time 1876.65ms, mfu 393.70%
+iter 1480: loss 3.0324, time 1868.76ms, mfu 394.11%
+iter 1490: loss 3.2984, time 1874.81ms, mfu 394.35%
+step 1500: train loss 3.4023, val loss 2.9465
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 1500: loss 3.9485, time 19701.05ms, mfu 358.69%
+iter 1510: loss 3.0974, time 1935.29ms, mfu 361.23%
+iter 1520: loss 3.0234, time 1849.09ms, mfu 365.31%
+iter 1530: loss 4.2391, time 1836.90ms, mfu 369.25%
+iter 1540: loss 3.4014, time 1878.89ms, mfu 371.89%
+iter 1550: loss 3.5391, time 1880.95ms, mfu 374.22%
+iter 1560: loss 4.2176, time 1877.90ms, mfu 376.38%
+iter 1570: loss 4.2347, time 1853.20ms, mfu 378.86%
+iter 1580: loss 2.9053, time 1859.24ms, mfu 380.95%
+iter 1590: loss 3.6011, time 1859.17ms, mfu 382.84%
+iter 1600: loss 3.7622, time 1851.72ms, mfu 384.70%
+iter 1610: loss 3.1866, time 1863.23ms, mfu 386.13%
+iter 1620: loss 3.0713, time 1861.34ms, mfu 387.46%
+iter 1630: loss 3.5953, time 1852.77ms, mfu 388.83%
+iter 1640: loss 3.3330, time 1870.01ms, mfu 389.70%
+iter 1650: loss 3.1194, time 1867.28ms, mfu 390.54%
+iter 1660: loss 2.5538, time 1858.79ms, mfu 391.48%
+iter 1670: loss 3.1397, time 1864.15ms, mfu 392.21%
+iter 1680: loss 3.3660, time 1850.59ms, mfu 393.16%
+iter 1690: loss 2.9362, time 1860.86ms, mfu 393.79%
+iter 1700: loss 2.8258, time 1862.70ms, mfu 394.32%
+iter 1710: loss 3.5065, time 1863.44ms, mfu 394.78%
+iter 1720: loss 3.2803, time 1861.73ms, mfu 395.23%
+iter 1730: loss 3.9610, time 1860.76ms, mfu 395.66%
+iter 1740: loss 3.1284, time 1855.94ms, mfu 396.15%
+step 1750: train loss 3.3684, val loss 3.0980
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 1750: loss 3.1378, time 24464.16ms, mfu 359.57%
+iter 1760: loss 3.5810, time 1946.03ms, mfu 361.81%
+iter 1770: loss 3.6158, time 1931.66ms, mfu 364.12%
+iter 1780: loss 3.2710, time 1838.80ms, mfu 368.13%
+iter 1790: loss 3.4902, time 1815.78ms, mfu 372.26%
+iter 1800: loss 3.7905, time 1867.11ms, mfu 374.85%
+iter 1810: loss 3.2656, time 1887.58ms, mfu 376.74%
+iter 1820: loss 3.2959, time 1849.43ms, mfu 379.26%
+iter 1830: loss 3.2263, time 1841.29ms, mfu 381.71%
+iter 1840: loss 3.4979, time 1869.39ms, mfu 383.30%
+iter 1850: loss 3.4348, time 1882.12ms, mfu 384.47%
+iter 1860: loss 4.0697, time 1877.53ms, mfu 385.62%
+iter 1870: loss 3.3258, time 1875.79ms, mfu 386.68%
+iter 1880: loss 3.7407, time 1874.35ms, mfu 387.68%
+iter 1890: loss 3.0345, time 1868.68ms, mfu 388.69%
+iter 1900: loss 3.3791, time 1863.17ms, mfu 389.72%
+iter 1910: loss 3.2378, time 1861.98ms, mfu 390.67%
+iter 1920: loss 3.7965, time 1868.65ms, mfu 391.39%
+iter 1930: loss 4.2102, time 1846.80ms, mfu 392.50%
+iter 1940: loss 3.0564, time 1863.48ms, mfu 393.14%
+iter 1950: loss 3.2777, time 1860.23ms, mfu 393.79%
+iter 1960: loss 3.3635, time 1865.28ms, mfu 394.26%
+iter 1970: loss 3.2620, time 1859.30ms, mfu 394.82%
+iter 1980: loss 2.7520, time 1854.87ms, mfu 395.41%
+iter 1990: loss 3.1763, time 1861.69ms, mfu 395.80%
+step 2000: train loss 3.1162, val loss 3.0518
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 2000: loss 3.2214, time 20885.46ms, mfu 359.78%
+iter 2010: loss 2.4384, time 1942.26ms, mfu 362.08%
+iter 2020: loss 2.8721, time 1871.52ms, mfu 365.59%
+iter 2030: loss 3.1301, time 1842.50ms, mfu 369.38%
+iter 2040: loss 3.9312, time 1861.05ms, mfu 372.38%
+iter 2050: loss 3.1226, time 1895.01ms, mfu 374.37%
+iter 2060: loss 3.5338, time 1867.03ms, mfu 376.75%
+iter 2070: loss 3.1362, time 1858.77ms, mfu 379.07%
+iter 2080: loss 3.2247, time 1858.91ms, mfu 381.15%
+iter 2090: loss 4.0220, time 1851.83ms, mfu 383.18%
+iter 2100: loss 2.9576, time 1849.71ms, mfu 385.05%
+iter 2110: loss 3.2641, time 1867.18ms, mfu 386.36%
+iter 2120: loss 3.6251, time 1867.97ms, mfu 387.52%
+iter 2130: loss 2.9676, time 1878.06ms, mfu 388.35%
+iter 2140: loss 3.1942, time 1869.00ms, mfu 389.29%
+iter 2150: loss 2.8405, time 1882.57ms, mfu 389.85%
+iter 2160: loss 3.2916, time 1884.27ms, mfu 390.31%
+iter 2170: loss 3.4152, time 1871.24ms, mfu 391.01%
+iter 2180: loss 2.4909, time 1871.31ms, mfu 391.63%
+iter 2190: loss 3.2758, time 1871.73ms, mfu 392.18%
+iter 2200: loss 3.9103, time 1875.03ms, mfu 392.61%
+iter 2210: loss 2.8668, time 1882.52ms, mfu 392.84%
+iter 2220: loss 3.1529, time 1862.88ms, mfu 393.46%
+iter 2230: loss 3.0765, time 1878.95ms, mfu 393.68%
+iter 2240: loss 3.3155, time 1877.39ms, mfu 393.90%
+step 2250: train loss 3.0354, val loss 3.0291
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 2250: loss 3.2764, time 20919.40ms, mfu 358.07%
+iter 2260: loss 3.1899, time 1952.02ms, mfu 360.34%
+iter 2270: loss 2.8694, time 1877.29ms, mfu 363.91%
+iter 2280: loss 3.3759, time 1839.78ms, mfu 367.92%
+iter 2290: loss 3.8266, time 1861.55ms, mfu 371.06%
+iter 2300: loss 3.3793, time 1887.41ms, mfu 373.34%
+iter 2310: loss 3.0416, time 1870.22ms, mfu 375.76%
+iter 2320: loss 2.3195, time 1844.70ms, mfu 378.48%
+iter 2330: loss 3.1228, time 1841.10ms, mfu 381.01%
+iter 2340: loss 3.6532, time 1864.69ms, mfu 382.77%
+iter 2350: loss 3.1711, time 1869.64ms, mfu 384.26%
+iter 2360: loss 3.7008, time 1886.14ms, mfu 385.24%
+iter 2370: loss 2.7935, time 1882.16ms, mfu 386.21%
+iter 2380: loss 3.1994, time 1878.61ms, mfu 387.16%
+iter 2390: loss 3.4425, time 1883.08ms, mfu 387.92%
+iter 2400: loss 2.9904, time 1884.33ms, mfu 388.58%
+iter 2410: loss 3.1714, time 1870.01ms, mfu 389.48%
+iter 2420: loss 2.8698, time 1879.14ms, mfu 390.09%
+iter 2430: loss 3.3117, time 1874.35ms, mfu 390.74%
+iter 2440: loss 3.3152, time 1873.93ms, mfu 391.33%
+iter 2450: loss 2.9097, time 1882.77ms, mfu 391.68%
+iter 2460: loss 3.3980, time 1876.73ms, mfu 392.13%
+iter 2470: loss 2.2361, time 1878.42ms, mfu 392.49%
+iter 2480: loss 3.2210, time 1865.82ms, mfu 393.08%
+iter 2490: loss 3.5042, time 1884.70ms, mfu 393.21%
+step 2500: train loss 3.1440, val loss 2.8544
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 2500: loss 2.4391, time 21156.55ms, mfu 357.41%
+iter 2510: loss 3.7472, time 1944.79ms, mfu 359.89%
+iter 2520: loss 3.3055, time 1864.06ms, mfu 363.78%
+iter 2530: loss 2.6154, time 1836.91ms, mfu 367.87%
+iter 2540: loss 2.6851, time 1855.94ms, mfu 371.14%
+iter 2550: loss 3.2839, time 1904.00ms, mfu 373.07%
+iter 2560: loss 3.8819, time 1878.37ms, mfu 375.34%
+iter 2570: loss 3.6808, time 1858.89ms, mfu 377.79%
+iter 2580: loss 3.8008, time 1844.15ms, mfu 380.32%
+iter 2590: loss 2.9582, time 1850.82ms, mfu 382.45%
+iter 2600: loss 3.5457, time 1850.05ms, mfu 384.39%
+iter 2610: loss 2.9047, time 1868.09ms, mfu 385.74%
+iter 2620: loss 3.7839, time 1861.45ms, mfu 387.11%
+iter 2630: loss 2.4075, time 1874.06ms, mfu 388.06%
+iter 2640: loss 2.8824, time 1867.41ms, mfu 389.06%
+iter 2650: loss 2.3003, time 1854.92ms, mfu 390.23%
+iter 2660: loss 3.4509, time 1866.47ms, mfu 391.04%
+iter 2670: loss 3.8593, time 1862.18ms, mfu 391.85%
+iter 2680: loss 2.6466, time 1860.34ms, mfu 392.63%
+iter 2690: loss 3.4747, time 1855.04ms, mfu 393.44%
+iter 2700: loss 3.3484, time 1864.51ms, mfu 393.96%
+iter 2710: loss 3.1731, time 1867.06ms, mfu 394.38%
+iter 2720: loss 3.8141, time 1867.76ms, mfu 394.74%
+iter 2730: loss 2.9947, time 1854.16ms, mfu 395.36%
+iter 2740: loss 4.1872, time 1859.88ms, mfu 395.79%
+step 2750: train loss 3.0160, val loss 2.9067
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 2750: loss 3.4108, time 24740.85ms, mfu 359.22%
+iter 2760: loss 2.9013, time 1948.94ms, mfu 361.44%
+iter 2770: loss 3.3704, time 1959.10ms, mfu 363.24%
+iter 2780: loss 2.6817, time 1809.90ms, mfu 367.99%
+iter 2790: loss 2.3011, time 1835.73ms, mfu 371.69%
+iter 2800: loss 3.4910, time 1901.39ms, mfu 373.61%
+iter 2810: loss 2.7866, time 1877.20ms, mfu 375.85%
+iter 2820: loss 2.8670, time 1855.55ms, mfu 378.33%
+iter 2830: loss 2.7940, time 1859.48ms, mfu 380.47%
+iter 2840: loss 3.2673, time 1877.35ms, mfu 382.02%
+iter 2850: loss 2.6054, time 1878.66ms, mfu 383.39%
+iter 2860: loss 3.4535, time 1891.10ms, mfu 384.36%
+iter 2870: loss 3.1284, time 1884.47ms, mfu 385.37%
+iter 2880: loss 3.1130, time 1880.02ms, mfu 386.37%
+iter 2890: loss 3.2033, time 1869.74ms, mfu 387.50%
+iter 2900: loss 2.9997, time 1871.07ms, mfu 388.48%
+iter 2910: loss 2.8964, time 1864.89ms, mfu 389.49%
+iter 2920: loss 2.1723, time 1862.83ms, mfu 390.45%
+iter 2930: loss 3.2480, time 1868.18ms, mfu 391.19%
+iter 2940: loss 2.6416, time 1857.14ms, mfu 392.10%
+iter 2950: loss 2.7779, time 1862.82ms, mfu 392.80%
+iter 2960: loss 3.1868, time 1859.69ms, mfu 393.49%
+iter 2970: loss 3.7114, time 1858.63ms, mfu 394.14%
+iter 2980: loss 3.5546, time 1855.71ms, mfu 394.78%
+iter 2990: loss 2.0183, time 1864.67ms, mfu 395.17%
+step 3000: train loss 3.0584, val loss 2.9296
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 3000: loss 3.4802, time 19111.27ms, mfu 359.54%
+iter 3010: loss 3.1231, time 1922.66ms, mfu 362.25%
+iter 3020: loss 3.0261, time 1854.06ms, mfu 366.12%
+iter 3030: loss 2.8589, time 1848.76ms, mfu 369.72%
+iter 3040: loss 2.9100, time 1869.87ms, mfu 372.50%
+iter 3050: loss 3.5283, time 1901.33ms, mfu 374.35%
+iter 3060: loss 2.4893, time 1869.77ms, mfu 376.67%
+iter 3070: loss 3.2880, time 1858.61ms, mfu 379.00%
+iter 3080: loss 3.0541, time 1842.80ms, mfu 381.44%
+iter 3090: loss 2.2270, time 1861.24ms, mfu 383.24%
+iter 3100: loss 2.1923, time 1874.03ms, mfu 384.58%
+iter 3110: loss 3.1445, time 1877.79ms, mfu 385.71%
+iter 3120: loss 3.0304, time 1879.94ms, mfu 386.68%
+iter 3130: loss 2.9071, time 1880.22ms, mfu 387.55%
+iter 3140: loss 2.9726, time 1882.65ms, mfu 388.28%
+iter 3150: loss 3.1728, time 1867.13ms, mfu 389.27%
+iter 3160: loss 4.0119, time 1853.38ms, mfu 390.45%
+iter 3170: loss 3.6691, time 1863.62ms, mfu 391.29%
+iter 3180: loss 3.0193, time 1856.98ms, mfu 392.19%
+iter 3190: loss 2.5050, time 1861.20ms, mfu 392.92%
+iter 3200: loss 2.9807, time 1848.75ms, mfu 393.83%
+iter 3210: loss 2.9146, time 1851.69ms, mfu 394.60%
+iter 3220: loss 3.1707, time 1854.79ms, mfu 395.21%
+iter 3230: loss 2.8492, time 1855.24ms, mfu 395.76%
+iter 3240: loss 3.1854, time 1859.67ms, mfu 396.16%
+step 3250: train loss 3.0311, val loss 2.9736
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 3250: loss 2.9330, time 19323.20ms, mfu 360.39%
+iter 3260: loss 3.2914, time 1926.05ms, mfu 362.95%
+iter 3270: loss 3.3479, time 1880.26ms, mfu 366.19%
+iter 3280: loss 2.5997, time 1841.84ms, mfu 369.93%
+iter 3290: loss 3.2678, time 1867.83ms, mfu 372.74%
+iter 3300: loss 2.3232, time 1878.17ms, mfu 375.04%
+iter 3310: loss 3.6838, time 1863.37ms, mfu 377.43%
+iter 3320: loss 2.9244, time 1855.75ms, mfu 379.75%
+iter 3330: loss 2.6927, time 1861.19ms, mfu 381.71%
+iter 3340: loss 2.5762, time 1881.15ms, mfu 383.06%
+iter 3350: loss 2.9433, time 1874.42ms, mfu 384.41%
+iter 3360: loss 2.6347, time 1855.92ms, mfu 386.02%
+iter 3370: loss 2.4816, time 1843.40ms, mfu 387.75%
+iter 3380: loss 2.5863, time 1862.30ms, mfu 388.89%
+iter 3390: loss 3.0660, time 1866.07ms, mfu 389.84%
+iter 3400: loss 2.7090, time 1878.23ms, mfu 390.43%
+iter 3410: loss 3.2439, time 1881.73ms, mfu 390.89%
+iter 3420: loss 4.0643, time 1880.16ms, mfu 391.34%
+iter 3430: loss 4.0966, time 1878.28ms, mfu 391.79%
+iter 3440: loss 3.2556, time 1870.02ms, mfu 392.36%
+iter 3450: loss 2.8194, time 1862.27ms, mfu 393.04%
+iter 3460: loss 2.4726, time 1840.36ms, mfu 394.13%
+iter 3470: loss 3.2491, time 1860.14ms, mfu 394.68%
+iter 3480: loss 3.2724, time 1849.32ms, mfu 395.41%
+iter 3490: loss 3.8946, time 1849.37ms, mfu 396.06%
+step 3500: train loss 2.8264, val loss 2.8474
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 3500: loss 3.1201, time 21230.08ms, mfu 359.96%
+iter 3510: loss 2.7013, time 1952.44ms, mfu 362.04%
+iter 3520: loss 2.9391, time 1872.04ms, mfu 365.54%
+iter 3530: loss 3.0020, time 1839.60ms, mfu 369.40%
+iter 3540: loss 2.9978, time 1842.05ms, mfu 372.81%
+iter 3550: loss 3.8115, time 1893.28ms, mfu 374.80%
+iter 3560: loss 2.8041, time 1854.75ms, mfu 377.40%
+iter 3570: loss 2.4411, time 1840.20ms, mfu 380.05%
+iter 3580: loss 2.8139, time 1871.19ms, mfu 381.78%
+iter 3590: loss 3.0000, time 1879.04ms, mfu 383.16%
+iter 3600: loss 3.5420, time 1884.47ms, mfu 384.29%
+iter 3610: loss 3.4119, time 1887.44ms, mfu 385.25%
+iter 3620: loss 2.9129, time 1883.29ms, mfu 386.19%
+iter 3630: loss 3.0273, time 1878.28ms, mfu 387.15%
+iter 3640: loss 2.9208, time 1878.97ms, mfu 388.00%
+iter 3650: loss 2.5566, time 1864.95ms, mfu 389.06%
+iter 3660: loss 2.2845, time 1864.60ms, mfu 390.02%
+iter 3670: loss 2.7583, time 1856.78ms, mfu 391.06%
+iter 3680: loss 2.9232, time 1860.25ms, mfu 391.91%
+iter 3690: loss 3.3005, time 1868.61ms, mfu 392.50%
+iter 3700: loss 3.2849, time 1861.17ms, mfu 393.19%
+iter 3710: loss 2.4758, time 1865.75ms, mfu 393.72%
+iter 3720: loss 2.9483, time 1877.85ms, mfu 393.93%
+iter 3730: loss 3.3311, time 1885.86ms, mfu 393.96%
+iter 3740: loss 1.5860, time 1885.48ms, mfu 393.99%
+step 3750: train loss 2.9106, val loss 2.9342
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 3750: loss 2.9168, time 21502.12ms, mfu 358.05%
+iter 3760: loss 2.8708, time 1940.43ms, mfu 360.55%
+iter 3770: loss 2.0778, time 1858.04ms, mfu 364.50%
+iter 3780: loss 3.0355, time 1855.54ms, mfu 368.12%
+iter 3790: loss 3.2378, time 1851.95ms, mfu 371.44%
+iter 3800: loss 3.3926, time 1876.22ms, mfu 373.92%
+iter 3810: loss 3.2122, time 1879.88ms, mfu 376.07%
+iter 3820: loss 2.6707, time 1886.36ms, mfu 377.87%
+iter 3830: loss 3.2369, time 1868.75ms, mfu 379.86%
+iter 3840: loss 3.6066, time 1869.16ms, mfu 381.65%
+iter 3850: loss 3.5643, time 1870.04ms, mfu 383.24%
+iter 3860: loss 3.0326, time 1863.36ms, mfu 384.81%
+iter 3870: loss 3.5692, time 1849.11ms, mfu 386.53%
+iter 3880: loss 2.3764, time 1848.06ms, mfu 388.10%
+iter 3890: loss 3.3041, time 1857.71ms, mfu 389.31%
+iter 3900: loss 3.8343, time 1869.82ms, mfu 390.13%
+iter 3910: loss 2.2498, time 1853.35ms, mfu 391.23%
+iter 3920: loss 3.2592, time 1872.26ms, mfu 391.81%
+iter 3930: loss 2.8358, time 1872.14ms, mfu 392.34%
+iter 3940: loss 2.1351, time 1887.36ms, mfu 392.49%
+iter 3950: loss 2.8588, time 1880.50ms, mfu 392.77%
+iter 3960: loss 3.0185, time 1874.41ms, mfu 393.15%
+iter 3970: loss 3.3556, time 1874.49ms, mfu 393.49%
+iter 3980: loss 2.7031, time 1858.84ms, mfu 394.14%
+iter 3990: loss 2.6133, time 1860.00ms, mfu 394.69%
+step 4000: train loss 2.8379, val loss 2.7432
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 4000: loss 3.2373, time 21343.74ms, mfu 358.70%
+iter 4010: loss 2.9547, time 1942.30ms, mfu 361.11%
+iter 4020: loss 2.8040, time 1884.42ms, mfu 364.44%
+iter 4030: loss 3.8233, time 1848.89ms, mfu 368.21%
+iter 4040: loss 2.3962, time 1852.09ms, mfu 371.52%
+iter 4050: loss 2.5149, time 1889.07ms, mfu 373.72%
+iter 4060: loss 3.1531, time 1896.41ms, mfu 375.55%
+iter 4070: loss 2.9142, time 1876.07ms, mfu 377.62%
+iter 4080: loss 3.1942, time 1874.37ms, mfu 379.52%
+iter 4090: loss 3.6288, time 1858.44ms, mfu 381.56%
+iter 4100: loss 2.2515, time 1852.19ms, mfu 383.54%
+iter 4110: loss 2.1953, time 1865.77ms, mfu 385.03%
+iter 4120: loss 2.4700, time 1885.11ms, mfu 385.96%
+iter 4130: loss 3.2129, time 1901.35ms, mfu 386.46%
+iter 4140: loss 2.8239, time 1887.84ms, mfu 387.19%
+iter 4150: loss 2.0326, time 1872.02ms, mfu 388.18%
+iter 4160: loss 2.8956, time 1878.44ms, mfu 388.94%
+iter 4170: loss 2.2486, time 1866.12ms, mfu 389.88%
+iter 4180: loss 2.5650, time 1860.92ms, mfu 390.84%
+iter 4190: loss 2.6127, time 1861.54ms, mfu 391.69%
+iter 4200: loss 2.5948, time 1861.04ms, mfu 392.46%
+iter 4210: loss 2.6379, time 1855.04ms, mfu 393.29%
+iter 4220: loss 3.0989, time 1856.56ms, mfu 394.00%
+iter 4230: loss 3.0075, time 1870.16ms, mfu 394.35%
+iter 4240: loss 3.0829, time 1876.94ms, mfu 394.52%
+step 4250: train loss 2.8397, val loss 2.8261
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 4250: loss 1.7782, time 19416.81ms, mfu 358.90%
+iter 4260: loss 3.0789, time 1947.58ms, mfu 361.18%
+iter 4270: loss 2.4961, time 1860.55ms, mfu 365.01%
+iter 4280: loss 2.9844, time 1844.06ms, mfu 368.82%
+iter 4290: loss 2.4224, time 1868.35ms, mfu 371.73%
+iter 4300: loss 3.1206, time 1908.83ms, mfu 373.50%
+iter 4310: loss 2.8368, time 1870.94ms, mfu 375.88%
+iter 4320: loss 2.6425, time 1839.49ms, mfu 378.71%
+iter 4330: loss 2.5525, time 1854.81ms, mfu 380.91%
+iter 4340: loss 2.9280, time 1863.86ms, mfu 382.71%
+iter 4350: loss 2.8006, time 1871.91ms, mfu 384.15%
+iter 4360: loss 1.8701, time 1893.22ms, mfu 385.00%
+iter 4370: loss 1.9956, time 1891.75ms, mfu 385.79%
+iter 4380: loss 3.1503, time 1882.80ms, mfu 386.70%
+iter 4390: loss 2.5445, time 1894.34ms, mfu 387.27%
+iter 4400: loss 3.1555, time 1885.84ms, mfu 387.96%
+iter 4410: loss 2.6449, time 1883.14ms, mfu 388.64%
+iter 4420: loss 3.1954, time 1884.06ms, mfu 389.23%
+iter 4430: loss 3.3866, time 1889.64ms, mfu 389.65%
+iter 4440: loss 2.2849, time 1880.81ms, mfu 390.21%
+iter 4450: loss 2.8365, time 1885.36ms, mfu 390.62%
+iter 4460: loss 3.0220, time 1861.84ms, mfu 391.48%
+iter 4470: loss 2.5263, time 1874.78ms, mfu 391.98%
+iter 4480: loss 2.9623, time 1851.66ms, mfu 392.93%
+iter 4490: loss 2.8359, time 1856.61ms, mfu 393.68%
+step 4500: train loss 2.8500, val loss 2.8892
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 4500: loss 3.7664, time 20207.23ms, mfu 357.99%
+iter 4510: loss 3.3359, time 1949.43ms, mfu 360.32%
+iter 4520: loss 2.7519, time 1882.38ms, mfu 363.78%
+iter 4530: loss 2.4314, time 1840.10ms, mfu 367.80%
+iter 4540: loss 2.8137, time 1886.86ms, mfu 370.42%
+iter 4550: loss 3.2608, time 1902.19ms, mfu 372.46%
+iter 4560: loss 3.3853, time 1856.63ms, mfu 375.25%
+iter 4570: loss 2.6678, time 1840.39ms, mfu 378.12%
+iter 4580: loss 3.3512, time 1860.61ms, mfu 380.26%
+iter 4590: loss 2.5726, time 1864.45ms, mfu 382.10%
+iter 4600: loss 3.3724, time 1874.90ms, mfu 383.54%
+iter 4610: loss 3.8984, time 1881.93ms, mfu 384.69%
+iter 4620: loss 2.0963, time 1875.36ms, mfu 385.86%
+iter 4630: loss 2.9491, time 1880.31ms, mfu 386.81%
+iter 4640: loss 3.1840, time 1894.21ms, mfu 387.37%
+iter 4650: loss 1.7732, time 1884.73ms, mfu 388.08%
+iter 4660: loss 3.0272, time 1906.10ms, mfu 388.27%
+iter 4670: loss 2.2071, time 1884.00ms, mfu 388.90%
+iter 4680: loss 2.3115, time 1884.51ms, mfu 389.46%
+iter 4690: loss 3.2704, time 1879.45ms, mfu 390.06%
+iter 4700: loss 2.9287, time 1897.22ms, mfu 390.24%
+iter 4710: loss 3.4020, time 1890.98ms, mfu 390.53%
+iter 4720: loss 3.1372, time 1885.05ms, mfu 390.91%
+iter 4730: loss 2.3073, time 1868.23ms, mfu 391.61%
+iter 4740: loss 2.7541, time 1851.03ms, mfu 392.61%
+step 4750: train loss 2.8563, val loss 2.9146
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 4750: loss 2.7356, time 19032.10ms, mfu 357.25%
+iter 4760: loss 2.5533, time 1913.37ms, mfu 360.38%
+iter 4770: loss 3.1276, time 1876.87ms, mfu 363.95%
+iter 4780: loss 2.1396, time 1843.52ms, mfu 367.88%
+iter 4790: loss 2.6209, time 1862.15ms, mfu 371.01%
+iter 4800: loss 2.0300, time 1903.99ms, mfu 372.95%
+iter 4810: loss 2.9781, time 1881.20ms, mfu 375.17%
+iter 4820: loss 3.0313, time 1869.39ms, mfu 377.42%
+iter 4830: loss 3.0306, time 1870.45ms, mfu 379.42%
+iter 4840: loss 2.6203, time 1861.76ms, mfu 381.41%
+iter 4850: loss 2.5397, time 1868.15ms, mfu 383.06%
+iter 4860: loss 2.7699, time 1873.79ms, mfu 384.43%
+iter 4870: loss 2.8903, time 1874.65ms, mfu 385.64%
+iter 4880: loss 1.9909, time 1894.55ms, mfu 386.31%
+iter 4890: loss 2.9882, time 1883.05ms, mfu 387.16%
+iter 4900: loss 2.5313, time 1885.61ms, mfu 387.86%
+iter 4910: loss 2.9423, time 1877.86ms, mfu 388.66%
+iter 4920: loss 2.6682, time 1882.03ms, mfu 389.30%
+iter 4930: loss 2.4596, time 1864.42ms, mfu 390.24%
+iter 4940: loss 2.5765, time 1866.01ms, mfu 391.05%
+iter 4950: loss 2.2799, time 1852.48ms, mfu 392.08%
+iter 4960: loss 2.3503, time 1855.15ms, mfu 392.94%
+iter 4970: loss 2.2971, time 1859.32ms, mfu 393.63%
+iter 4980: loss 2.6350, time 1867.19ms, mfu 394.08%
+iter 4990: loss 3.0128, time 1874.13ms, mfu 394.33%
+step 5000: train loss 2.7648, val loss 2.8424
+saving checkpoint to /content/drive/MyDrive/Cores-AI TR v1.0.0-85M/out-cores-85m-test
+iter 5000: loss 2.9983, time 19201.63ms, mfu 358.77%
